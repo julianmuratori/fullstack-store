@@ -13,11 +13,15 @@ class NewStore extends Component {
     
     state = {
         tags: ["Vegetables", "Fruit", "Dairy", "Eggs", "Dry Goods"],
-        selectedTags: []
+        selectedTags: [],
+        storeName: "",
+        storeDesc: ""
+
     }
 
-    handleChange = () => {
-        console.log(this)
+    handleChange = (e) => {
+        // console.log(e.target.name)
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     renderTags = (key) => {
@@ -62,13 +66,19 @@ class NewStore extends Component {
                     <Field>
                         <Label>Store Name</Label>
                         <Control>
-                            <Input type="text" />
+                            <Input 
+                                type="text" 
+                                name="storeName"
+                                onChange={this.handleChange}/>
                         </Control>
                     </Field>
                     <Field>
                         <Label>Description</Label>
                         <Control>
-                            <TextArea type="text" />
+                            <TextArea 
+                                type="text" 
+                                onChange={this.handleChange}
+                                name="storeDesc"/>
                         </Control>
                     </Field>
                     <Field>
