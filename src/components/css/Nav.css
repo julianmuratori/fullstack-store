@@ -1,0 +1,15 @@
+.piglogo {
+    max-width: 50px !important;
+    max-height: none !important;
+    padding: 5px 0 0 5px;
+
+}
+
+.navbar {
+    border: solid 1px #00D1B2;
+    margin: "0"; 
+}
+
+.nav-end {
+    margin-right: 15px;
+}
