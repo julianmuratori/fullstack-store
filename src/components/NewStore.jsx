@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Field, Input, Label, Control, TextArea, Button } from 'bloomer'
 import StoreTagSelector from './StoreTagSelector';
+import axios from 'axios'
 
 class NewStore extends Component {
 
@@ -19,7 +20,19 @@ class NewStore extends Component {
 
     }
 
-    handleChange = (e) => {
+    handleSubmit = e => {
+        e.preventDefault()
+        const { selectedTags, storeName, storeDesc } = this.state
+        axios
+            .post("/add", {
+                storeName,
+                storeDesc,
+                selectedTags
+            })
+
+    }
+
+    handleChange = e => {
         // console.log(e.target.name)
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -62,7 +75,7 @@ class NewStore extends Component {
         return (
             <div>
                 <h2>Fill out the form below to add your store:</h2>
-                <form action="">
+                <form action="" onSubmit={this.handleSubmit}>
                     <Field>
                         <Label>Store Name</Label>
                         <Control>
@@ -90,7 +103,9 @@ class NewStore extends Component {
                     </Field>
                     <Field>
                         <Control>
-                            <Button isColor="primary">Submit</Button>
+                            <Button 
+                                type="submit" 
+                                isColor="primary">Submit</Button>
                         </Control>
                     </Field>
                 </form>
