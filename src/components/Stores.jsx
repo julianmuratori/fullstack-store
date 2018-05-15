@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container } from 'bloomer'
 import axios from 'axios'
+import StoresCard from './StoresCard'
 
 class Stores extends Component {
 
@@ -23,7 +24,7 @@ class Stores extends Component {
 
     renderStores = (i) => {
         return (
-            <h1 key={i}>{i.storeName}</h1>
+            <StoresCard info={i} />
         )
     }
 

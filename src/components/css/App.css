@@ -1,3 +1,19 @@
 /* .App {
     background: black;
 } */
+
+.wrapper {
+    padding: 15px 20px;
+}
+
+.wrapper h1 {
+    font-size: 2rem;
+}
+
+.wrapper h3 {
+    font-size: 1.625rem;
+}
+
+.wrapper h4 {
+    font-size: 1.25rem;
+}

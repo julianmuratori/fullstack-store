@@ -1,10 +1,9 @@
 
 import React, { Component } from 'react'
-import { Navbar, NavbarItem, NavbarMenu, NavbarStart } from 'bloomer'
+import { Navbar, NavbarItem, NavbarMenu, NavbarStart, NavbarEnd } from 'bloomer'
 import logo from './assets/pig-logo.png'
 // import bulma from 'bulma'
 import './css/Nav.css'
-import { NavbarEnd } from 'bloomer/lib/components/Navbar/NavbarEnd';
 import { Link } from 'react-router-dom';
 
 class Nav extends Component {

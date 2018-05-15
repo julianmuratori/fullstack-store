@@ -1,29 +1,27 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import axios from "axios";
-import { Container } from 'bloomer'
+import { Container, Card } from 'bloomer'
 import './css/App.css'
 
 import Nav from './Nav'
 import Stores from './Stores'
 import NewStore from './NewStore'
+import BackendStore from './BackendStore'
 
 class App extends Component {
-  componentDidMount() {
-    axios.get("/hello").then(res => {
-      console.log(res.data);
-    });
-  }
-  
+    
   render() {
     return (
       <Router>
         <div className="App">
         <Container>
           <Nav />
-          {/* <Stores /> */}
-          <Route path="/Stores" component={Stores}/>
-          <Route path="/newstore" component={NewStore} />
+          <Card className="wrapper">
+            <Route exact path="/stores" component={Stores}/>
+            <Route path="/newstore" component={NewStore} />
+            <Route path={`/stores/:slug`} component={BackendStore} />
+          </Card>
         </Container>
         </div>
 

@@ -1,0 +1,15 @@
+.box.BackendStore--header {
+    display: block;
+    margin: 10px auto 40px;
+    max-width: 550px;
+}
+
+.box.BackendStore--body {
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+/* .BackendStore--body__headings {
+    margin: 0 5px;
+    border: 1px solid blue;
+} */
