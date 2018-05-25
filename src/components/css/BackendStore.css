@@ -13,3 +13,11 @@
     margin: 0 5px;
     border: 1px solid blue;
 } */
+
+.newInventory--inputField {
+    width: 100%;
+}
+
+.newInventory--inputField > select {
+    width: 100%;
+}

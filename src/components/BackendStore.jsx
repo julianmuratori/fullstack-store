@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import { Container, Box, Columns, Column } from 'bloomer'
+// import axios from 'axios'
+import { Box } from 'bloomer'
+import NewInventoryItem from './NewInventoryItem'
 import './css/BackendStore.css'
 
 class BackendStore extends Component {
@@ -19,9 +20,10 @@ class BackendStore extends Component {
 
                 <Box hasTextAlign="centered">
                     <h4>Enter a new inventory item or click below to edit your existing inventory</h4>
+                    <NewInventoryItem />
                 </Box>
 
-                <Columns>
+                {/* <Columns>
                     <Column>
                         <Box isDisplay="flex">
                             
@@ -37,7 +39,7 @@ class BackendStore extends Component {
                             
                         </Box>
                     </Column>
-                </Columns>
+                </Columns> */}
                 {/* <Box className="BackendStore--body">
                     <Columns>
                         <Column className="BackendStore--body__headings">
