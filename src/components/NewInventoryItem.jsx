@@ -2,28 +2,53 @@ import React, { Component } from 'react'
 // import axios from 'axios'
 import { Field, Input, Label, Control, Button, Column, Columns, Select } from 'bloomer'
 
+
 class NewInventoryItem extends Component {
-
+    
+    constructor() {
+        super()
+        
+        this.verifySubmission = this.verifySubmission.bind(this)
+    }
+    
     state = {
-        name: null,
-        price: null,
-        format: null,
-        foodcategory: null,
-        quantity: null
+        name: undefined,
+        price: undefined,
+        format: undefined,
+        foodcategory: undefined,
+        quantity: undefined
     }
-
-    handleChange = e => {
-        this.setState({ [e.target.name]: e.target.value })
+    
+    verifySubmission() {
+        const newState = this.state
+        if (newState.name && newState.price && newState.format && newState.foodcategory && newState.quantity !== undefined) {
+            return true
+        } else {
+            return false
+        }
     }
-
+    
+    handleChange = async (e) => {
+        await this.setState({ [e.target.name]: e.target.value })
+        const newState = this.state
+        // console.log(newState)
+        // Object.keys(newState)
+        this.verifySubmission(newState)
+        
+        // console.log(isEnabled)
+    }
+    
+    
     handleSubmit = e => {
         e.preventDefault()
-        console.log("submitted")
+        const { name, price, format, foodcategory, quantity } = this.state
     }
-
-
-
+    
+    
     render() {
+        
+        const isEnabled = this.verifySubmission();
+
         return (
             <form 
             action="POST" 
@@ -35,7 +60,7 @@ class NewInventoryItem extends Component {
                         <Control>
                             <Input
                                 type="text"
-                                name="name" 
+                                name="name"
                                 onChange={this.handleChange}/>
                         </Control>
                     </Field>
@@ -46,7 +71,8 @@ class NewInventoryItem extends Component {
                         <Label>Price</Label>
                         <Control>
                             <Input 
-                                type="text" 
+                                type="number"
+                                min='0' 
                                 name="price"
                                 onChange={this.handleChange} />
                         </Control>
@@ -61,6 +87,7 @@ class NewInventoryItem extends Component {
                             className="newInventory--inputField" 
                             name="format"
                             onChange={this.handleChange}>
+                                <option selected disabled>Choose Below</option>
                                 <option value="piece">Per Piece</option>
                                 <option value="kilo">Per Kilo</option>
                             </Select>
@@ -76,6 +103,7 @@ class NewInventoryItem extends Component {
                             className="newInventory--inputField" 
                             name="foodcategory"
                             onChange={this.handleChange}>
+                                <option selected disabled>Choose Below</option>
                                 <option value="dairy">Dairy</option>
                                 <option value="vegetable">Vegetable</option>
                                 <option value="fruit">Fruit</option>
@@ -106,7 +134,9 @@ class NewInventoryItem extends Component {
                         <Control hasTextAlign="centered">
                             <Button 
                             isFullWidth={true}
-                            type="submit">Submit</Button>
+                            type="submit"
+                            disabled={!isEnabled}
+                            >Submit</Button>
                         </Control>
                     </Field>
                 </Column>

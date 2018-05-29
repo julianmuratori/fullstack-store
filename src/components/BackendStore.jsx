@@ -5,6 +5,9 @@ import NewInventoryItem from './NewInventoryItem'
 import './css/BackendStore.css'
 
 class BackendStore extends Component {
+
+    
+
     render() {
         
         const { info } = this.props.location.state
