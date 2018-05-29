@@ -7,7 +7,6 @@ class NewInventoryItem extends Component {
     
     constructor() {
         super()
-        
         this.verifySubmission = this.verifySubmission.bind(this)
     }
     
@@ -15,7 +14,7 @@ class NewInventoryItem extends Component {
         name: undefined,
         price: undefined,
         format: undefined,
-        foodcategory: undefined,
+        category: undefined,
         quantity: undefined
     }
     
@@ -41,7 +40,10 @@ class NewInventoryItem extends Component {
     
     handleSubmit = e => {
         e.preventDefault()
-        const { name, price, format, foodcategory, quantity } = this.state
+        const item = this.state
+        const { addToInventory } = this.props
+
+        addToInventory(item)
     }
     
     
@@ -101,7 +103,7 @@ class NewInventoryItem extends Component {
                         <Control>
                             <Select 
                             className="newInventory--inputField" 
-                            name="foodcategory"
+                            name="category"
                             onChange={this.handleChange}>
                                 <option selected disabled>Choose Below</option>
                                 <option value="dairy">Dairy</option>

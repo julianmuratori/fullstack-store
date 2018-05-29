@@ -21,3 +21,19 @@
 .newInventory--inputField > select {
     width: 100%;
 }
+
+.inventory-columns {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inventory-edit-buttons-container {
+    display: block;
+    margin-top: 10px;
+}
+
+.inventory-edit-buttons {
+    width: calc(50% - 10px);
+    margin: 0 5px;
+
+}
