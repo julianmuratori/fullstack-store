@@ -28,8 +28,7 @@ class InventoryCard extends Component {
 
                     <span className="inventory-edit-buttons-container">
                         <Button 
-                            className="inventory-edit-buttons"
-                            onClick={this.verifyDelete}>Edit</Button>
+                            className="inventory-edit-buttons">Edit</Button>
                         <Button 
                             className="inventory-edit-buttons"
                             onClick={this.verifyDelete}>Delete?</Button>
