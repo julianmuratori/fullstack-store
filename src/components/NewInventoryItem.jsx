@@ -17,24 +17,23 @@ class NewInventoryItem extends Component {
         category: undefined,
         quantity: undefined
     }
-    
-    verifySubmission() {
+
+    verifySubmission = () => {
         const newState = this.state
-        if (newState.name && newState.price && newState.format && newState.foodcategory && newState.quantity !== undefined) {
-            return true
-        } else {
+        
+        const unfilled = Object.values(newState).includes(undefined)
+        const empty = Object.values(newState).includes("")
+        
+        if (!unfilled && !empty) {
             return false
+        } else {
+            return true
         }
     }
     
+    
     handleChange = async (e) => {
         await this.setState({ [e.target.name]: e.target.value })
-        const newState = this.state
-        // console.log(newState)
-        // Object.keys(newState)
-        this.verifySubmission(newState)
-        
-        // console.log(isEnabled)
     }
     
     
@@ -48,8 +47,6 @@ class NewInventoryItem extends Component {
     
     
     render() {
-        
-        const isEnabled = this.verifySubmission();
 
         return (
             <form 
@@ -122,7 +119,7 @@ class NewInventoryItem extends Component {
                         <Label>Quantity</Label>
                         <Control>
                             <Input 
-                            type="text" 
+                            type="number" 
                             name="quantity"
                             onChange={this.handleChange} />
                         </Control>
@@ -137,7 +134,7 @@ class NewInventoryItem extends Component {
                             <Button 
                             isFullWidth={true}
                             type="submit"
-                            disabled={!isEnabled}
+                            disabled={this.verifySubmission()}
                             >Submit</Button>
                         </Control>
                     </Field>

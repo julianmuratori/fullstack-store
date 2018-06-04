@@ -10,7 +10,7 @@ import './css/BackendStore.css'
 class BackendStore extends Component {
 
     state = {
-        inventory: [],
+        inventory: {},
         save: false
     }
 
@@ -21,14 +21,27 @@ class BackendStore extends Component {
     refresh = () => {
         const store = this.props.location.state.info.slug
 
-        axios.get(`/stores/${store}/inventory`).then(res => {
-            if (res.data.payload) {
-                this.setState({ inventory: res.data.payload })
+
+        axios.get(`/stores/${store}`).then(res => {
+            if (res.data) {
+                this.setState({ inventory: res.data })
             }
         })
+
     }
     addToInventory = e => {
-        console.log(e)
+        const { category, format, name, price, quantity } = e
+        const store = this.props.location.state.info.slug
+        const storeId = this.state.inventory.id
+        
+        axios.post(`/stores/${store}/inventory`, {
+            category,
+            format,
+            name,
+            price,
+            quantity,
+            storeId
+        })
     }
 
     removeFromInventory = e => {
@@ -43,7 +56,8 @@ class BackendStore extends Component {
                 inventory={inventory[e]}
                 removeFromInventory={this.removeFromInventory}
                 delete={this.state.delete}
-                save={this.state.save} />
+                save={this.state.save}
+                key={e} />
         )
     }
 
@@ -68,10 +82,10 @@ class BackendStore extends Component {
 
                 <Box>
                     <Columns className="inventory-columns">
-                    {
+                    {/* {
                         Object.keys(inventory)
                             .map(this.renderInventory)
-                    }
+                    } */}
                     </Columns>
                 </Box>
             </div>
