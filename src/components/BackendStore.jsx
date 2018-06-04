@@ -14,20 +14,17 @@ class BackendStore extends Component {
         save: false
     }
 
-    componentDidMount() {
-        this.refresh()
-    }
-
+    
     refresh = () => {
         const store = this.props.location.state.info.slug
-
-
+        
+        
         axios.get(`/stores/${store}`).then(res => {
             if (res.data) {
-                this.setState({ inventory: res.data })
+                this.setState({ inventory: res.data.payload })
             }
         })
-
+        
     }
     addToInventory = e => {
         const { category, format, name, price, quantity } = e
@@ -42,23 +39,29 @@ class BackendStore extends Component {
             quantity,
             storeId
         })
+        .then(this.refresh)
     }
-
+    
     removeFromInventory = e => {
-        console.log("remove from inventory function in backendstore")
+        const id = e
+        axios.delete(`/stores/item/${id}`).then(this.refresh)
     }
     
     renderInventory = e => {
         const { inventory } = this.state
-
+        
         return (
             <InventoryCard 
-                inventory={inventory[e]}
-                removeFromInventory={this.removeFromInventory}
-                delete={this.state.delete}
-                save={this.state.save}
-                key={e} />
+            inventory={inventory[e]}
+            removeFromInventory={this.removeFromInventory}
+            delete={this.state.delete}
+            save={this.state.save}
+            key={e} />
         )
+    }
+    
+    componentDidMount() {
+        this.refresh()
     }
 
     render() {
@@ -82,10 +85,10 @@ class BackendStore extends Component {
 
                 <Box>
                     <Columns className="inventory-columns">
-                    {/* {
+                    {
                         Object.keys(inventory)
                             .map(this.renderInventory)
-                    } */}
+                    }
                     </Columns>
                 </Box>
             </div>

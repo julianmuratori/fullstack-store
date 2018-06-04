@@ -24,7 +24,9 @@ class Stores extends Component {
 
     renderStores = (i) => {
         return (
-            <StoresCard info={i} />
+            <StoresCard 
+            info={i}
+            key={i} />
         )
     }
 

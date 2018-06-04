@@ -8,8 +8,11 @@ class InventoryCard extends Component {
         confirm: false
     }
 
-    verifyDelete = e => {
-        console.log('inventorycard component')
+    removeItem = e => {
+        const { inventory, removeFromInventory } = this.props
+        const id = inventory._id
+
+        removeFromInventory(id)
     }
     
     render() {
@@ -31,7 +34,7 @@ class InventoryCard extends Component {
                             className="inventory-edit-buttons">Edit</Button>
                         <Button 
                             className="inventory-edit-buttons"
-                            onClick={this.verifyDelete}>Delete?</Button>
+                            onClick={this.removeItem}>Delete?</Button>
                     </span>
                 </Box>
             </Column>
