@@ -5,6 +5,8 @@ import { Container, Card } from 'bloomer'
 import './css/App.css'
 
 import Nav from './Nav'
+import Login from './Login'
+import Register from './Register'
 import Stores from './Stores'
 import NewStore from './NewStore'
 import BackendStore from './BackendStore'
@@ -15,9 +17,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-        <Container>
+          <Container className="wrapper">
           <Nav />
-          <Card className="wrapper">
+          <Card>
+            {/* <Route exact path="/" component={Login}/> */}
+              <Route exact path="/" component={Register} />
             <Route exact path="/stores" component={Stores}/>
             <Route path="/newstore" component={NewStore} />
             <Route path={`/stores/:slug`} component={BackendStore} />

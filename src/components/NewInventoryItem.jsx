@@ -73,6 +73,7 @@ class NewInventoryItem extends Component {
                                 type="number"
                                 min='0' 
                                 name="price"
+                                step="0.01"
                                 onChange={this.handleChange} />
                         </Control>
                     </Field>
@@ -121,6 +122,7 @@ class NewInventoryItem extends Component {
                             <Input 
                             type="number" 
                             name="quantity"
+                            min='0'
                             onChange={this.handleChange} />
                         </Control>
                     </Field>

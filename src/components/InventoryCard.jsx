@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Box, Column, Button } from 'bloomer'
+import { Box, Column, Button } from 'bloomer'
 
 class InventoryCard extends Component {
 
@@ -17,8 +17,8 @@ class InventoryCard extends Component {
     
     render() {
         
-        const { inventory, removeFromInventory } = this.props
-        const deletion = this.state.delete
+        const { inventory } = this.props
+        // const deletion = this.state.delete
 
         return (
             <Column isSize={3}>
@@ -30,8 +30,8 @@ class InventoryCard extends Component {
                     <h5>{inventory.quantity} available</h5>
 
                     <span className="inventory-edit-buttons-container">
-                        <Button 
-                            className="inventory-edit-buttons">Edit</Button>
+                        {/* <Button 
+                            className="inventory-edit-buttons">Edit</Button> */}
                         <Button 
                             className="inventory-edit-buttons"
                             onClick={this.removeItem}>Delete?</Button>

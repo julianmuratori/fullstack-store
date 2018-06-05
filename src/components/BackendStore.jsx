@@ -14,7 +14,7 @@ class BackendStore extends Component {
         save: false
     }
 
-    
+    // method to update state based on current server data
     refresh = () => {
         const store = this.props.location.state.info.slug
         
@@ -26,6 +26,10 @@ class BackendStore extends Component {
         })
         
     }
+
+    // makes an axios call to add an item to store inventory 
+    // then calls refresh to update state
+
     addToInventory = e => {
         const { category, format, name, price, quantity } = e
         const store = this.props.location.state.info.slug
@@ -41,11 +45,20 @@ class BackendStore extends Component {
         })
         .then(this.refresh)
     }
+
+    // removes items from inventory
     
     removeFromInventory = e => {
         const id = e
         axios.delete(`/stores/item/${id}`).then(this.refresh)
+
+        this.clearInputs()
     }
+
+    clearInputs = () => {
+        console.log('hi')
+    }
+
     
     renderInventory = e => {
         const { inventory } = this.state

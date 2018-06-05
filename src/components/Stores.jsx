@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container } from 'bloomer'
+// import { Card } from 'bloomer'
 import axios from 'axios'
 import StoresCard from './StoresCard'
 
@@ -32,12 +32,12 @@ class Stores extends Component {
 
     render() {
         return (
-            <Container>
+            <div>
                 <h2>Please Select from a Store Below to Learn More:</h2>
                 {
                     this.state.stores.map(this.renderStores)
                 }
-            </Container>
+            </div>
         )
     }
 }
