@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Field, Input, Label, Control, Button } from "bloomer";
+import axios from 'axios'
 
 class Register extends Component {
 
     state = {
         email: "",
-        password: ""
+        password: "",
+        name: ""
     }
 
     // grab username and password from form and store in state
@@ -17,9 +19,18 @@ class Register extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const { email, password } = this.state
+        const { name, email, password } = this.state
 
         console.log('submitted')
+
+        axios.post('/register', {
+            name,
+            email,
+            password
+        })
+        .then(res => {
+            console.log(res)
+        })
     }
 
     render() {
@@ -30,6 +41,15 @@ class Register extends Component {
                     action="POST"
                     className="login-form"
                     onSubmit={this.handleSubmit}>
+                    <Field>
+                        <Label>Name</Label>
+                        <Control>
+                            <Input
+                                type="text"
+                                name="name"
+                                onChange={this.handleChange} />
+                        </Control>
+                    </Field>
                     <Field>
                         <Label>Email Address</Label>
                         <Control>
