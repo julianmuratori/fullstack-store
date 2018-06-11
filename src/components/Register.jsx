@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Field, Input, Label, Control, Button } from "bloomer";
 import axios from 'axios'
+import { setToken } from '../services/tokenService'
 
 class Register extends Component {
 
@@ -29,7 +30,12 @@ class Register extends Component {
             password
         })
         .then(res => {
-            console.log(res)
+            if (res.status === 200) {
+                const { payload, token } = res.data;
+                
+                this.props.setUser(payload)
+                setToken(token)
+            }
         })
     }
 
