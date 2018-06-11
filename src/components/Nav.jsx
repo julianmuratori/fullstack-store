@@ -1,10 +1,11 @@
 
 import React, { Component } from 'react'
-import { Navbar, NavbarItem, NavbarMenu, NavbarStart, NavbarEnd } from 'bloomer'
+import { Navbar, NavbarItem, NavbarMenu, NavbarStart, NavbarEnd, Control } from 'bloomer'
 import logo from './assets/pig-logo.png'
 // import bulma from 'bulma'
 import './css/Nav.css'
 import { Link } from 'react-router-dom';
+import Logout from './Logout'
 
 class Nav extends Component {
     render() {
@@ -23,9 +24,9 @@ class Nav extends Component {
                         </Link>
                     </NavbarStart>
                     <NavbarEnd>
-                        <Link to="/" className="navbar-item nav-end">
-                            Logout
-                        </Link>
+                        <Control>                            
+                            <Logout setUser={this.props.setUser}/>
+                        </Control>
                     </NavbarEnd>
                 </NavbarMenu>
             </Navbar>

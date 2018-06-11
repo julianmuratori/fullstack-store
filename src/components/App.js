@@ -52,7 +52,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Container className="wrapper">
-          <Nav />
+          <Nav setUser={this.setUser}/>
           <Card>
             <Route
               exact path="/register"
@@ -68,6 +68,10 @@ class App extends Component {
                   this.state.user ? <Dashboard /> : <Login />
                 }
               />
+            <Route exact path="/"
+              render={() => 
+                this.state.user ? <Dashboard setUser={this.setUser} /> : <Redirect to="/login"/>
+              } />
             <Route exact path="/stores" component={Stores}/>
             <Route path="/newstore" component={NewStore} />
             <Route path={`/stores/:slug`} component={BackendStore} />

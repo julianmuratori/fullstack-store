@@ -13,17 +13,13 @@ class Login extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    // 2 submit to server with axios request
-
     handleSubmit = e => {
         e.preventDefault()
         const { username, password } = this.state
 
-        console.log('submitted')
+        
     }
 
-    // 3 determine if accoutn exists and if name and pass are correct
-    // 4 send user either to their homepage or tell them to try again
 
     render() {
         return (
