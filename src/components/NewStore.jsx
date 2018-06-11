@@ -23,11 +23,13 @@ class NewStore extends Component {
     handleSubmit = e => {
         e.preventDefault()
         const { selectedTags, storeName, storeDesc } = this.state
+        const { user } = this.props;
         axios
             .post("/add", {
                 storeName,
                 storeDesc,
-                selectedTags
+                selectedTags,
+                user
             })
 
     }

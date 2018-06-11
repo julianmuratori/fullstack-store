@@ -22,8 +22,6 @@ class Register extends Component {
         e.preventDefault()
         const { name, email, password } = this.state
 
-        console.log('submitted')
-
         axios.post('/register', {
             name,
             email,
@@ -35,7 +33,7 @@ class Register extends Component {
                 
                 this.props.setUser(payload)
                 setToken(token)
-            }
+            } 
         })
     }
 

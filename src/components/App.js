@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import axios from "axios";
 import { Container, Card } from 'bloomer'
 import './css/App.css'
@@ -48,33 +48,33 @@ class App extends Component {
   }
     
   render() {
+
+    const { user } = this.state
+
     return (
       <Router>
         <div className="App">
           <Container className="wrapper">
-          <Nav setUser={this.setUser}/>
           <Card>
-            <Route
-              exact path="/register"
-              render={() =>
-                // if there is a user set in state)
-                this.state.user ? <Dashboard /> : <Register setUser={this.setUser}/>
-              }
-            />
+            <Switch>
               <Route
-                exact
-                path="/login"
-                render={() =>
-                  this.state.user ? <Dashboard /> : <Login />
-                }
-              />
-            <Route exact path="/"
-              render={() => 
-                this.state.user ? <Dashboard setUser={this.setUser} /> : <Redirect to="/login"/>
-              } />
-            <Route exact path="/stores" component={Stores}/>
-            <Route path="/newstore" component={NewStore} />
-            <Route path={`/stores/:slug`} component={BackendStore} />
+                exact path="/login"
+                render={() => 
+                  this.state.user ? <Redirect to="/"/> : <Login setUser={this.setUser}/>}
+                />
+              
+              <Route
+                path="/"
+                render={() => 
+                  this.state.user ? <Dashboard setUser={this.setUser} user={user}/> : <Redirect to="/login" />}
+                />
+              
+              <Route 
+                exact path="/register"
+                render={() => 
+                  this.state.user ? <Redirect to="/"/> : <Register setUser={this.setUser} />}
+                />
+            </Switch>
           </Card>
         </Container>
         </div>

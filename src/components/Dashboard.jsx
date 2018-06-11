@@ -1,11 +1,34 @@
 import React, { Component } from 'react'
+import Nav from './Nav'
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import NewStore from './NewStore'
+import BackendStore from './BackendStore'
+import Stores from './Stores'
 
 class Dashboard extends Component {
     render() {
+        const { setUser, user } = this.props
         return (
+            <Router>
             <div>
-                <h1>welcome to hell</h1>
+                <Nav setUser={setUser}/>
+
+                <Route 
+                    exact path="/stores"
+                    render={() => <Stores />}
+                    />
+                
+                <Route
+                    exact path={`/stores/:slug`} 
+                    component={BackendStore}
+                    />
+
+                <Route 
+                    exact path="/newstore"
+                    render={() => <NewStore user={user._id}/>}
+                    />
             </div>
+            </Router>
         )
     }
 }
