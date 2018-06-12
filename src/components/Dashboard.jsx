@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Nav from './Nav'
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import NewStore from './NewStore'
 import BackendStore from './BackendStore'
 import Stores from './Stores'
 
 class Dashboard extends Component {
     render() {
+        
         const { setUser, user } = this.props
         return (
             <Router>
@@ -20,7 +21,7 @@ class Dashboard extends Component {
                 
                 <Route
                     exact path={`/stores/:slug`} 
-                    render={() => <BackendStore />}
+                    render={(props) => <BackendStore {...props}/>}
                     />
 
                 <Route 

@@ -75,6 +75,7 @@ class BackendStore extends Component {
     
     componentDidMount() {
         this.refresh()
+        
     }
 
     render() {

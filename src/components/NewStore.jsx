@@ -66,7 +66,7 @@ class NewStore extends Component {
         if (selectedTags.includes(tag)) {
 
             const newTags = selectedTags.filter(function(i) {
-                return i != tag
+                return i !== tag
             })
 
             this.setState({ selectedTags: newTags })

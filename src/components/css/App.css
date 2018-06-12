@@ -2,6 +2,11 @@
     background: black;
 } */
 
+body {
+    height: 100vh;
+    background: #fbc8c8;
+}
+
 .wrapper {
     padding: 15px 20px;
     max-width: 1024px !important;
@@ -12,6 +17,9 @@
     font-size: 2rem;
 }
 
+.wrapper h2 {
+    font-size: 1.8rem;
+}
 .wrapper h3 {
     font-size: 1.625rem;
 }
@@ -24,4 +32,25 @@
     max-width: 500px;
     margin: 0 auto;
     padding: 50px 0;
+}
+
+.login-screen {
+    margin-top: 100px;
+    padding-top: 30px;
+}
+
+.login-screen-text {
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgba(23, 23, 50, 1);
+}
+
+.login-screen-text img {
+    margin: 0 0 15px;
+}
+
+.login-screen .card {
+    padding: 30px 20px 0;
+    max-width: 500px;
+    margin: 0 auto;
 }

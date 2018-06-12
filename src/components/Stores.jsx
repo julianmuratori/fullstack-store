@@ -33,11 +33,7 @@ class Stores extends Component {
     }
 
     renderStores = (i) => {
-        return (
-            <StoresCard 
-            info={i}
-            key={i} />
-        )
+        return <StoresCard info={i} key={i._id} />
     }
 
     render() {

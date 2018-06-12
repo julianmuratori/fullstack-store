@@ -6,14 +6,14 @@ import './css/StoresCard.css'
 class StoresCard extends Component {
     
     render() {
-        const { info } = this.props
+        const info = this.props.info
         return (
             <Box className="storesCard">
                 <div className="storesCard-title">
                     {/* sending all the props along to the BackendStore component */}
                     <Link to={{
-                        pathname: `/stores/${info.slug}`,
-                        state: {info}
+                        pathname: `/stores/${info.storeName}`,
+                        state: { info } 
                     }}>
                         <h4>{info.storeName}</h4>
                     </Link>

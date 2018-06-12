@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { setToken } from '../services/tokenService'
-import { Field, Input, Label, Control, TextArea, Button } from "bloomer";
+import { Field, Input, Label, Control, Button, Card } from "bloomer";
+import { Link } from 'react-router-dom'
+import logo from "./assets/pig-logo.png";
 
 class Login extends Component {
 
@@ -37,8 +39,14 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Please login to view your account:</h2>
+            <div className="login-screen">
+                <div className="login-screen-text">
+                    <img src={logo} className="piglogo" alt=""/>
+                    <h2>Plump Lil' Piggy CMS</h2>
+                    <h4>Please login to view your account</h4>
+                </div>
+                
+                <Card>
                 <form 
                     action="POST" 
                     className="login-form"
@@ -70,6 +78,8 @@ class Login extends Component {
                         </Control>
                     </Field>
                 </form>
+
+                </Card>
             </div>
         )
     }

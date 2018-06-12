@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import axios from 'axios'
 import { Field, Input, Label, Control, Button, Column, Columns, Select } from 'bloomer'
 
 
@@ -43,6 +42,17 @@ class NewInventoryItem extends Component {
         const { addToInventory } = this.props
 
         addToInventory(item)
+        this.clearInput()
+    }
+    
+    clearInput = () => {
+        this.setState({
+          name: '',
+          price: '',
+          format: '1',
+          category: '',
+          quantity: ''
+        })
     }
     
     
@@ -60,7 +70,8 @@ class NewInventoryItem extends Component {
                             <Input
                                 type="text"
                                 name="name"
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange}
+                                value={this.state.name}/>
                         </Control>
                     </Field>
                 </Column>
@@ -74,7 +85,8 @@ class NewInventoryItem extends Component {
                                 min='0' 
                                 name="price"
                                 step="0.01"
-                                onChange={this.handleChange} />
+                                onChange={this.handleChange}
+                                value={this.state.price} />
                         </Control>
                     </Field>
                 </Column>
@@ -87,7 +99,7 @@ class NewInventoryItem extends Component {
                             className="newInventory--inputField" 
                             name="format"
                             onChange={this.handleChange}>
-                                <option selected disabled>Choose Below</option>
+                                <option disabled value='Choose Below'>Choose Below</option>
                                 <option value="piece">Per Piece</option>
                                 <option value="kilo">Per Kilo</option>
                             </Select>
@@ -123,6 +135,7 @@ class NewInventoryItem extends Component {
                             type="number" 
                             name="quantity"
                             min='0'
+                            value={this.state.quantity}
                             onChange={this.handleChange} />
                         </Control>
                     </Field>
