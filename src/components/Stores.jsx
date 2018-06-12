@@ -14,10 +14,20 @@ class Stores extends Component {
     }
     
     // makes a call to the API to retrieve stores
+    // refresh = () => {
+    //     axios.get("/stores").then(res => {
+    //         if (res.data.payload) {
+    //             this.setState({ stores: res.data.payload }); 
+    //         }
+    //     })
+    // }
+
     refresh = () => {
-        axios.get("/stores").then(res => {
+        const { user } = this.props;
+        
+        axios.get(`/${user}/stores`).then(res => {
             if (res.data.payload) {
-                this.setState({ stores: res.data.payload }); 
+                this.setState({ stores: res.data.payload })
             }
         })
     }

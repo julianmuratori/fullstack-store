@@ -15,12 +15,12 @@ class Dashboard extends Component {
 
                 <Route 
                     exact path="/stores"
-                    render={() => <Stores />}
+                    render={() => <Stores user={user._id} />}
                     />
                 
                 <Route
                     exact path={`/stores/:slug`} 
-                    component={BackendStore}
+                    render={() => <BackendStore />}
                     />
 
                 <Route 
