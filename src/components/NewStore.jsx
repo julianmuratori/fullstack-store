@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Field, Input, Label, Control, TextArea, Button } from 'bloomer'
+import { Field, Input, Label, Control, TextArea, Button, Card } from 'bloomer'
 import StoreTagSelector from './StoreTagSelector';
 import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 
 class NewStore extends Component {
 
@@ -30,6 +31,11 @@ class NewStore extends Component {
                 storeDesc,
                 selectedTags,
                 user
+            })
+            .then(res => {
+                if (res.status === 200) {
+                    this.props.history.push('/stores')
+                }
             })
 
     }
@@ -75,45 +81,55 @@ class NewStore extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Fill out the form below to add your store:</h2>
-                <form action="" onSubmit={this.handleSubmit}>
-                    <Field>
-                        <Label>Store Name</Label>
-                        <Control>
-                            <Input 
-                                type="text" 
-                                name="storeName"
-                                onChange={this.handleChange}/>
-                        </Control>
-                    </Field>
-                    <Field>
-                        <Label>Description</Label>
-                        <Control>
-                            <TextArea 
-                                type="text" 
-                                onChange={this.handleChange}
-                                name="storeDesc"/>
-                        </Control>
-                    </Field>
-                    <Field>
-                        <Control>
-                            {
-                                this.state.tags.map(this.renderTags)
-                            }
-                        </Control>
-                    </Field>
-                    <Field>
-                        <Control>
-                            <Button 
-                                type="submit" 
-                                isColor="primary">Submit</Button>
-                        </Control>
-                    </Field>
-                </form>
+            <div className="new-store">
+                
+                <div className="new-store-text">
+                    <h4>Fill out the form below to add your store:</h4>
+                </div>
+
+                <Card>
+                    <form 
+                        action="" 
+                        onSubmit={this.handleSubmit}
+                        className="new-store-form">
+                        <Field>
+                            <Label>Store Name</Label>
+                            <Control>
+                                <Input 
+                                    type="text" 
+                                    name="storeName"
+                                    onChange={this.handleChange}/>
+                            </Control>
+                        </Field>
+                        <Field>
+                            <Label>Description</Label>
+                            <Control>
+                                <TextArea 
+                                    type="text" 
+                                    onChange={this.handleChange}
+                                    name="storeDesc"/>
+                            </Control>
+                        </Field>
+                        <Field>
+                            <Label>Available Product Categories</Label>
+                            <Control className="new-store-tags">
+                                {
+                                    this.state.tags.map(this.renderTags)
+                                }
+                            </Control>
+                        </Field>
+                        <Field>
+                            <Control>
+                                <Button 
+                                    type="submit" 
+                                    isColor="primary">Submit</Button>
+                            </Control>
+                        </Field>
+                    </form>
+                </Card>
             </div>
         )
     }
 }
 
-export default NewStore;
+export default withRouter(NewStore);

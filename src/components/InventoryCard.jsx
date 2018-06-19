@@ -21,8 +21,8 @@ class InventoryCard extends Component {
         // const deletion = this.state.delete
 
         return (
-            <Column isSize={3}>
-                <Box hasTextAlign="centered">
+            <Column isSize={{mobile: 12, desktop: 3}}>
+                <Box hasTextAlign="centered" className="inventory-item-container">
                     <h4>{inventory.name}</h4>
                     <span>
                         <h5>${inventory.price} per {inventory.format}</h5>

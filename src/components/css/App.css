@@ -3,7 +3,8 @@
 } */
 
 body {
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     background: #fbc8c8;
 }
 
@@ -28,10 +29,11 @@ body {
     font-size: 1.25rem;
 }
 
+/* LOGIN SCREEN COMPONENT */
 .login-form {
     max-width: 500px;
     margin: 0 auto;
-    padding: 50px 0;
+    padding: 30px 0 20px;
 }
 
 .login-screen {
@@ -39,7 +41,7 @@ body {
     padding-top: 30px;
 }
 
-.login-screen-text {
+.login-screen-text, .new-store-text, .title-text {
     text-align: center;
     margin-bottom: 30px;
     color: rgba(23, 23, 50, 1);
@@ -53,4 +55,76 @@ body {
     padding: 30px 20px 0;
     max-width: 500px;
     margin: 0 auto;
+}
+
+.login-screen-register {
+    padding-bottom: 15px;
+}
+
+/* NEW STORE COMPONENT */
+.new-store {
+    padding-top: 30px;
+}
+
+.new-store .card {
+    padding: 50px 30px;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.new-store-tags {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.new-store-tags input {
+    position: absolute;
+    left: -2000px;
+}
+
+input[type="checkbox"] + label {
+    transition: all .15s;
+    cursor: pointer;
+}
+
+input[type='checkbox']:checked + label {
+    background: #363636;
+    color: whitesmoke;
+}
+
+label.checkbox input[type='checkbox']:checked {
+    /* background: blue; */
+}
+
+.new-store-tag {
+    border: 1px solid gainsboro;
+    padding: calc(0.375em - 1px) 0.75em;
+    min-width: 105px;
+    display: inline-block;
+    text-align: center;
+}
+
+/* WELCOME SCREEN */
+
+.welcome-screen {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.welcome-screen .card {
+    padding: 30px;
+    margin-top: 80px;
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.navbar-burger-button {
+    margin-top: auto;
+    margin-bottom: auto;
 }

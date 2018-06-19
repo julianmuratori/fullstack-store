@@ -42,7 +42,8 @@ class Login extends Component {
             <div className="login-screen">
                 <div className="login-screen-text">
                     <img src={logo} className="piglogo" alt=""/>
-                    <h2>Plump Lil' Piggy CMS</h2>
+                    <h2>Plump Lil' Piggy</h2>
+                    <h3>Inventory Management System</h3>
                     <h4>Please login to view your account</h4>
                 </div>
                 
@@ -64,7 +65,7 @@ class Login extends Component {
                         <Label>Password</Label>
                         <Control>
                             <Input
-                                type="text"
+                                type="password"
                                 name="password"
                                 onChange={this.handleChange} />                            
                         </Control>
@@ -78,7 +79,9 @@ class Login extends Component {
                         </Control>
                     </Field>
                 </form>
-
+                    <div className="login-screen-register">
+                        <p>Need to create an account? <a href="/register">Click here!</a></p>
+                    </div>
                 </Card>
             </div>
         )

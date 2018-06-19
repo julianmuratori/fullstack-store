@@ -12,15 +12,6 @@ class Stores extends Component {
     componentDidMount() {
         this.refresh()
     }
-    
-    // makes a call to the API to retrieve stores
-    // refresh = () => {
-    //     axios.get("/stores").then(res => {
-    //         if (res.data.payload) {
-    //             this.setState({ stores: res.data.payload }); 
-    //         }
-    //     })
-    // }
 
     refresh = () => {
         const { user } = this.props;
@@ -39,7 +30,7 @@ class Stores extends Component {
     render() {
         return (
             <div>
-                <h2>Please Select from a Store Below to Learn More:</h2>
+                <h4>Please Select from a Store Below to Learn More:</h4>
                 {
                     this.state.stores.map(this.renderStores)
                 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Box, Columns } from 'bloomer'
+import { Box, Columns, Card } from 'bloomer'
 
 import NewInventoryItem from './NewInventoryItem'
 import InventoryCard from './InventoryCard';
@@ -85,26 +85,24 @@ class BackendStore extends Component {
 
         return (
             <div>
-                <Box 
-                    className="BackendStore--header"
-                    hasTextAlign="centered">
-                    <h1>{info.storeName}</h1>
-                    <h3>"{info.storeDesc}"</h3>
-                </Box>
+                <div className="title-text">
+                <h1>{info.storeName}</h1>
+                <h3>"{info.storeDesc}"</h3>
+                </div>
 
-                <Box hasTextAlign="centered">
-                    <h4>Enter a new inventory item or click below to edit your existing inventory</h4>
-                    <NewInventoryItem addToInventory={this.addToInventory}/>
-                </Box>
+                <Card className="new-inventory-item">
+                <h4>
+                    Enter a new inventory item or click below to edit your
+                    existing inventory
+                </h4>
+                <NewInventoryItem addToInventory={this.addToInventory} />
+                </Card>
 
-                <Box>
+                <div className="inventory-container">
                     <Columns className="inventory-columns">
-                    {
-                        Object.keys(inventory)
-                            .map(this.renderInventory)
-                    }
+                        {Object.keys(inventory).map(this.renderInventory)}
                     </Columns>
-                </Box>
+                </div>                
             </div>
         )
     }

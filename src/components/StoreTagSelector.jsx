@@ -27,9 +27,12 @@ class StoreTagSelector extends Component {
 
 
     render() {
-        return (
-            <Checkbox onClick={this.handleChange}>{this.props.name}</Checkbox>
-        )
+        return <div>
+            <input type="checkbox" id={this.props.name} onClick={this.handleChange} />
+            <label for={this.props.name} className="new-store-tag">
+              {this.props.name}
+            </label>
+          </div>;
     }
 }
 

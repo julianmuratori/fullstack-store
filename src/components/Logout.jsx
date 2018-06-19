@@ -8,7 +8,7 @@ const Logout = props => {
         removeToken()
         props.setUser(null)
     }
-    return <Button onClick={logout}>Logout</Button>
+    return <Button className="logout-button" onClick={logout}>Logout</Button>
 }
 
 export default Logout

@@ -60,11 +60,6 @@ class App extends Component {
                   this.state.user ? <Redirect to="/"/> : <Login setUser={this.setUser}/>}
                 />
               
-              <Route
-                path="/"
-                render={() => 
-                  this.state.user ? <Dashboard setUser={this.setUser} user={user}/> : <Redirect to="/login" />}
-                />
               
               <Route 
                 exact path="/register"
@@ -72,6 +67,11 @@ class App extends Component {
                   this.state.user ? <Redirect to="/"/> : <Register setUser={this.setUser} />}
                 />
               
+              <Route
+                path="/"
+                render={() => 
+                  this.state.user ? <Dashboard setUser={this.setUser} user={user}/> : <Redirect to="/login" />}
+                />
             </Switch>
           
         </Container>

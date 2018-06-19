@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Field, Input, Label, Control, Button } from "bloomer";
+import { Field, Input, Label, Control, Button, Card } from "bloomer";
 import axios from 'axios'
 import { setToken } from '../services/tokenService'
+import logo from "./assets/pig-logo.png"
 
 class Register extends Component {
 
@@ -39,8 +40,14 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Please register an account below</h2>
+            <div className="login-screen">
+                <div className="login-screen-text">
+                    <img src={logo} className="piglogo" alt=""/>
+                    <h2>Plump Lil' Piggy</h2>
+                    <h3>Inventory Management System</h3>
+                    <h4>Please register to view your account</h4>
+                </div>
+                <Card>
                 <form
                     action="POST"
                     className="login-form"
@@ -67,7 +74,7 @@ class Register extends Component {
                         <Label>Password</Label>
                         <Control>
                             <Input
-                                type="text"
+                                type="password"
                                 name="password"
                                 onChange={this.handleChange} />
                         </Control>
@@ -81,6 +88,10 @@ class Register extends Component {
                         </Control>
                     </Field>
                 </form>
+                <div className="login-screen-register">
+                    <p>Need to login instead? <a href="/login">Click here!</a></p>
+                </div>
+                </Card>
             </div>
         )
     }

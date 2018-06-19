@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import NewStore from './NewStore'
 import BackendStore from './BackendStore'
 import Stores from './Stores'
+import WelcomeScreen from './WelcomeScreen';
 
 class Dashboard extends Component {
     render() {
@@ -27,6 +28,10 @@ class Dashboard extends Component {
                 <Route 
                     exact path="/newstore"
                     render={() => <NewStore user={user._id}/>}
+                    />
+                <Route
+                    exact path="/"
+                    render={() => <WelcomeScreen user={user.name}/>}
                     />
             </div>
             </Router>

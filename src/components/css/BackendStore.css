@@ -27,13 +27,34 @@
     flex-wrap: wrap;
 }
 
-.inventory-edit-buttons-container {
-    display: block;
-    margin-top: 10px;
+.new-inventory-item {
+    padding: 50px 30px;
 }
 
-.inventory-edit-buttons {
-    width: calc(50% - 10px);
-    margin: 0 5px;
+.new-inventory-item h4 {
+    text-align: center;
+    margin-bottom: 25px;
+}
 
+.inventory-container {
+    margin-top: 30px;
+}
+
+.inventory-item-container h4 {
+    font-weight: bold;
+}
+
+@media all and (max-width: 768px) {
+    .inventory-item-container {
+        display: flex !important;
+        justify-content: space-around;
+        align-items: center;
+        /* flex-wrap: wrap; */
+    }
+}
+
+@media all and (max-width: 550px) {
+    .inventory-item-container {
+        flex-direction: column;
+    }
 }
